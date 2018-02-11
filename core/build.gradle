@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    dataBinding { enabled true }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations' })
+    testCompile 'junit:junit:4.12'
+
+    compile "$support_package:appcompat-v7:$support_version"
+    compile "$support_package:design:$support_version"
+    compile "$support_package:cardview-v7:$support_version"
+    compile "$support_package:recyclerview-v7:$support_version"
+
+    compile "$butterknife_package:butterknife:$butterknife_version"
+    compile "$retrofit_package:retrofit:$retrofit_version"
+    compile "$retrofit_package:adapter-rxjava2:$retrofit_version"
+    compile "$retrofit_package:converter-gson:$retrofit_version"
+    compile "$rxjava_package:rxandroid:$rxjava_version"
+    compile "$rxjava_package:rxjava:$rxjava_version"
+
+    compile "$dagger_package:dagger:$dagger_version"
+    compile "$glide_package:glide:$glideVersion"
+
+
+
+}
